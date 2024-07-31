@@ -1,0 +1,12 @@
+nginx:
+  image: nginx:latest
+  replicas: 2
+
+service:
+  type: NodePort
+  port: 80
+
+secret:
+  username: myuser
+  password: mypassword
+

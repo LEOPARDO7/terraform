@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-nginx # Which will fetch the release name while creating an resources.
+spec:
+  replicas: {{ .Values.nginx.replicas }} # Which will fetch the values from the values.yaml file while creating an final manifest file.
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: {{ .Values.nginx.image }} # Which will fetch the values from the values.yaml file while creating an final manifest file.
+        ports:
+        - containerPort: 80
